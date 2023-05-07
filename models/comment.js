@@ -1,20 +1,12 @@
 const {Model, DataTypes} = require('sequelize')
 const sequelize = require('../config/connection.js')
 
-class Comment extends Model{
-    createdOnDate(){
-        const currentDate = new Date()
-        const day = currentDate.getDate()
-        const month = currentDate.getMonth()
-        const year = currentDate.getFullYear()
-        return `${month}/${day}/${year}`
-    }
-}
+class Comment extends Model{}
 
 Comment.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
@@ -28,12 +20,14 @@ Comment.init(
             allowNull: false
         },
         post_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: 'post',
                 key: 'id'
             }
         },
         user_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
