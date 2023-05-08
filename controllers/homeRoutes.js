@@ -38,24 +38,27 @@ router.get('/post/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name']
+                    attributes: {
+                        exclude: ['password', 'email']
+                    }
                 },
                 {
-                    model: Comment
+                    model: Comment,
+                    include: {
+                        model: User
+                    }
                 }
             ]
         })
 
-        const post = postData.map((data) => data.get({plain: true}))
-
-        if (!post) {
-            res.status(400).json({ message: 'No posts with this id exists' })
-        } else {
+        
+        const post = postData.get({plain: true})
+    
+        console.log(post)
             res.render('post', {
                 post,
                 loggedIn: req.session.loggedIn
             })
-        }
     } catch (err) {
         res.status(500).json(err)
     }
@@ -69,13 +72,11 @@ router.get('/dashboard', async (req, res) => {
                 user_id: req.session.user_id
             })
         } else {
-            res.render('login')
+            res.render('dashboard')
         }
     } catch (err) {
         res.status(500).json(err)
     }
 })
-
-
 
 module.exports = router
