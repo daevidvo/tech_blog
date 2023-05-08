@@ -57,7 +57,7 @@ router.put('/edit/:id', AuthUser, async (req, res) => {
     }
 })
 
-router.post('/create', AuthUser, async (req, res) => {
+router.post('/create', async (req, res) => {
     try {
         const postData = await Post.create({
             ...req.body,
