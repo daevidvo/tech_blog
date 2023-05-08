@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User} = require('../../models')
+const sequelize = require('../config/connection.js')
 
 router.post('/login', async(req,res)=>{
     try{
@@ -21,7 +22,7 @@ router.post('/login', async(req,res)=>{
             req.session.user_id = userData.id
             req.session.loggedIn = true;
         })
-
+        
         res.json({user: userData, message: 'Login successful'})
     }catch(err){
         res.status(500).json(err)
@@ -44,7 +45,7 @@ router.post('/signup', async (req, res) => {
             }
         })
 
-        
+
     } catch (err) {
         res.status(500).json(err)
     }
