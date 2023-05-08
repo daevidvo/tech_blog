@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {User} = require('../../models')
-const sequelize = require('../config/connection.js')
+const sequelize = require('../../config/connection.js')
 
 router.post('/login', async(req,res)=>{
     try{
