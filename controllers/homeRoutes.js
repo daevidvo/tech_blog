@@ -16,7 +16,6 @@ router.get('/', async (req,res)=>{
             ]
         })
         const posts = postData.map((data) => data.get({plain: true}))
-
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
@@ -38,17 +37,22 @@ router.get('/post/:id', async (req, res) => {
         const postData = await Post.findByPk(req.params.id, {
             include: [
                 {
-                    model: 'user',
+                    model: User,
                     attributes: ['name']
+                },
+                {
+                    model: Comment
                 }
             ]
         })
 
-        if (!postData) {
+        const post = postData.map((data) => data.get({plain: true}))
+
+        if (!post) {
             res.status(400).json({ message: 'No posts with this id exists' })
         } else {
-            res.render('', {
-                postData,
+            res.render('post', {
+                post,
                 loggedIn: req.session.loggedIn
             })
         }
@@ -56,5 +60,22 @@ router.get('/post/:id', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+router.get('/dashboard', async (req, res) => {
+    try {
+        if (req.session.loggedIn) {
+            res.render('dashboard', {
+                loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id
+            })
+        } else {
+            res.render('login')
+        }
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+
 
 module.exports = router

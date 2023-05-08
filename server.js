@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
+const helpers = require('./utils/helpers.js')
 
 const sequelize = require("./config/connection.js");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -51,7 +52,7 @@ startServer();
 
 // ROUTES
 // =========================
-// hompage: include existing posts, have links for (dashboard, home, login, logout)
+// hompage: include existing posts, have links for (dashboard, home)
 // - If user is not logged in, then when they click on any other page (other than home), then they are prompted to login
 // dashboard: has user posts
 // - edit the post info (title and text)
@@ -82,7 +83,6 @@ startServer();
 // create post page
 // comments partial
 // post partial
-// 
 
 
 
