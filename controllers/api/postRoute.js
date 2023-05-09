@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {User, Post, Comment} = require('../../models')
 const sequelize = require('../../config/connection.js')
 const {AuthUser} = require('../../utils/auth.js')
+const {createdOnDate} = require('../../utils/helpers.js')
 
 router.get('/', AuthUser, async (req, res) => {
     try {
@@ -60,7 +61,9 @@ router.put('/edit/:id', AuthUser, async (req, res) => {
 router.post('/create', async (req, res) => {
     try {
         const postData = await Post.create({
-            ...req.body,
+            title: req.body.title,
+            text: req.body.text,
+            dateCreated: createdOnDate(),
             user_id: req.session.user_id
         })
 
@@ -68,7 +71,7 @@ router.post('/create', async (req, res) => {
             res.status(400).json({ message: 'Please log in :\'))))))))))))))))))))))))))'})
         }
 
-
+        res.status(200).json({message: 'post created'})
     } catch (err) {
         res.status(500).json(err)
     }

@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+	    
+	    <div class="col-md-8 col-md-offset-2 mx-auto">
+	        
+    		<h1>Create post</h1>
+    		
+    		<form class="createPostForm">
+    		    
+    		    <div class="form-group">
+    		        <label for="title">Title</label>
+    		        <input type="text" id="postTitle" class="form-control" name="title">
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <label for="description">Body</label>
+    		        <textarea rows="5" id="postText" class="form-control" name="description"></textarea>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <button type="submit" id="createPostButton" class="btn btn-primary">
+    		            Create
+    		        </button>
+
+                    <a href="/dashboard">Cancel</a>
+
+    		    </div>
+    		    
+    		</form>
+		</div>
+		
+	</div>
+</div>
+
+<script defer src="/js/edit.js"></script>
