@@ -15,7 +15,9 @@ const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: "Wg0n@0B<6.",
-  cookie: {},
+  cookie: {
+    maxAge: 180000
+  },
   resave: false,
   saveUninitialized: false,
   store: new SequelizeStore({
@@ -50,40 +52,10 @@ startServer();
 
 
 
-// ROUTES
-// =========================
-// hompage: include existing posts, have links for (dashboard, home)
-// - If user is not logged in, then when they click on any other page (other than home), then they are prompted to login
-// dashboard: has user posts
-// - edit the post info (title and text)
-// users: login, logout, signup
-// - posts
-// posts: create(taken to home page with new blog post there), edit (taken back to dashboard on delete), and delete (taken back to dashboard on delete)
-// comments: create, 
+// todo
+// ===============
+// leave a comment functionality
 // 
-
-// JS SCRIPTS
-// =========================
-// login
-// logout
-// sign up
-// edit
-// delete
-// comment
-// click on a post
-
-// LAYOUTS
-// =========================
-// main template
-// home
-// dashboard
-// sign up page
-// login page
-// 404 page
-// create post page
-// comments partial
-// post partial
-
 
 
 

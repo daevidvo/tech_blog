@@ -1,18 +1,38 @@
-<form style="width: 22rem;" class="mx-auto py-5">
+<form style="width: 22rem;" class="mx-auto py-5 login-form">
 
         <div class="form-outline mb-4">
-          <input type="email" id="email" class="form-control">
+          <input type="email" id="form1email" class="form-control">
+          <label class="form-label" for="form1email" style="margin-left: 0px;">Email address</label>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <div class="form-outline mb-4">
+          <input type="password" id="form1password" class="form-control">
+          <label class="form-label" for="form1password" style="margin-left: 0px;">Password</label>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4" id="signInButton">Sign in</button>
+
+</form>
+
+<form style="width: 22rem;" class="mx-auto py-5 signup-form">
+
+        <div class="form-outline mb-4">
+          <input type="text" id="form2username" class="form-control">
+          <label class="form-label" for="form2Example1" style="margin-left: 0px;">Username</label>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+        
+        <div class="form-outline mb-4">
+          <input type="email" id="form2email" class="form-control">
           <label class="form-label" for="form2Example1" style="margin-left: 0px;">Email address</label>
         <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
 
         <div class="form-outline mb-4">
-          <input type="password" id="password" class="form-control">
+          <input type="password" id="form2password" class="form-control">
           <label class="form-label" for="form2Example2" style="margin-left: 0px;">Password</label>
         <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
 
-        <button type="button" class="btn btn-primary btn-block mb-4" id="signInButton">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4" id="signUnButton">Sign up</button>
 
-        <div class="text-center">
-          <p>Not a member? <a href="/signup">Register</a></p>
-        </div>
 </form>
+
+<script defer src="/js/login.js"></script>
